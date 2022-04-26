@@ -8,11 +8,36 @@ const millisecondElement = document.querySelector(".millisecond");
 const startButton = document.querySelector(".start");
 const pauseButton = document.querySelector(".pause");
 const stopButton = document.querySelector(".stop");
+const newButton = document.querySelector(".new");
 
 //Listeners------------------------------------------------
 startButton.addEventListener("click", () => {
   clearInterval(interval);
   interval = setInterval(startTimer, 10);
+});
+// Pause button--------------------------------------------------
+pauseButton.addEventListener("click", () => {
+  clearInterval(interval);
+});
+//stopButton--------------------------------------------------
+stopButton.addEventListener("click", () => {
+  clearInterval(interval);
+  clearFields();
+  disabledBtn()
+});
+
+// new button--------------------------------------------
+newButton.addEventListener("click", () => {
+  clearInterval(interval);
+  counter++;
+  const results = document.querySelector(".results");
+  const block = document.createElement("div");
+  block.classList.add("results__info");
+  block.innerText = `Results:${counter}:${hour}:${minute}:${second}:${millisecond}`;
+  results.append(block);
+  clearFields();
+  clearInterval(interval);
+  interval = setInterval(startTimer, 10); // функция старта
 });
 
 //Variables----------------------------------------------
@@ -20,7 +45,9 @@ let hour = 00,
   minute = 00,
   second = 00,
   millisecond = 00,
-  interval;
+  interval,
+  counter = 0,
+  disabled = true;
 
 function startTimer() {
   millisecond++;
@@ -70,4 +97,21 @@ function startTimer() {
   if (hour < 9) {
     hourElement.innerText = "0" + hour;
   }
+newButton.disabled = false
 }
+function clearFields() {
+  (hour = 00),
+    (minute = 00),
+    (second = 00),
+    (millisecond = 00),
+    (hourElement.textContent = "00");
+  minuteElement.textContent = "00";
+  secondElement.textContent = "00";
+  millisecondElement.textContent = "00";
+}
+function disabledBtn () {
+    if (disabled) {
+        newButton.disabled = true
+    }
+}
+disabledBtn()
