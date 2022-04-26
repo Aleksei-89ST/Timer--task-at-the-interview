@@ -77,7 +77,22 @@
   font-size: 18px;
   padding: 10px;
   width: 180px;
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.buttons .button.start, .buttons .button.stop {
+  color: #2987be;
+}
+
+.buttons .button.start:hover, .buttons .button.stop:hover {
+  background-color: #1059b8;
+  color: white;
+}
+
+.buttons .button.pause:hover {
+  background-color: red;
+  color: white;
 }
 /*# sourceMappingURL=main.css.map */
