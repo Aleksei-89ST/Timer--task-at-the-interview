@@ -18,6 +18,7 @@ startButton.addEventListener("click", () => {
 // Pause button--------------------------------------------------
 pauseButton.addEventListener("click", () => {
   clearInterval(interval);
+  disabledBtn()
 });
 //stopButton--------------------------------------------------
 stopButton.addEventListener("click", () => {
@@ -83,15 +84,15 @@ function startTimer() {
   if (minute < 9) {
     minuteElement.innerText = "0" + minute;
   }
-  // if (minuteElement > 9 ) {
-  //     minuteElement.innerText = minute
-  // }
-  // if (minute > 60 ) {
-  //     hour++
-  //     hourElement.innerText = '0' + hour
-  //     minute = 0
-  //     minuteElement.innerText = '0' + minute
-  // }
+  if (minuteElement > 9 ) {
+      minuteElement.innerText = minute
+  }
+  if (minute > 60 ) {
+      hour++
+      hourElement.innerText = '0' + hour
+      minute = 0
+      minuteElement.innerText = '0' + minute
+  }
 
   //Hour------------------------------------------------
   if (hour < 9) {
